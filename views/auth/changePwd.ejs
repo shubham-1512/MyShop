@@ -1,0 +1,25 @@
+<%- include('../includes/header.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <main>
+        <% if(errorMsg) { %>
+            <div class="user-message user-message--error"><%= errorMsg %></div>
+                <% } %>
+        <form class="login-form" action="/changePwd" method="post">
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name = "password" id="password" required>
+                <label for="password">Confirm Password</label>
+                <input type="password" name = "cnfpassword" id="password" required>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <input type="hidden" name="userId" value="<%= userId %>" >
+                <input type="hidden" name="token" value="<%= token %>" >
+            </div>
+            <button class="btn" type="submit">Save</button>
+        </form>
+    </main>
+</body>
+</html>
